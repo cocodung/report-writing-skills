@@ -10,14 +10,15 @@
 |---|---|
 | 개발 저장소 | `report-writing-skill/`를 별도 로컬 Git 저장소로 구성 |
 | 스펙 정리 | 반복 규칙을 통합하고 형식별 예시·판정 사례를 보조 문서로 이관. [대응표와 검토 기록](docs/superpowers/specs/2026-09-09-integrated-distiller-writing-example-notes.md#spec-refactor-audit) |
-| 설계 결정 | 기존 초안의 조건부 첫 묶음 검토 확정. 그룹 6·7 구체화안과 나머지 완료·인계·재개 세부 기준은 검토 단계 |
+| 설계 결정 | 그룹 6·7과 완료·인계·진입·재개를 포함한 세부 기준의 설계 검토 완료 |
+| 호출·산출물 | `report_writing:brainstorm`, `report_writing:spec`, `report_writing:writing-plan`, `report_writing:develop` / 최종 HTML 보고서 |
 | 첫 예시 | 원고 방향에 긍정적 평가. 해설 후 U·M·P·S 표기 유지 |
 | 구현 계획 | 작성 전 |
 | 실제 스킬 | SKILL.md 구현·설치 전 |
 
 ## 먼저 읽을 문서
 
-1. [기준 설계 스펙](docs/superpowers/specs/2026-09-09-report-writing-skill-design.md): 현재 요구사항과 결정 상태. §2는 단계별 입력·산출물·완료 기준, §3은 승인·점검·변경·재개, §4는 작성 기준, §5는 구현 계획 인계, §6은 남은 검토를 다룬다.
+1. [기준 설계 스펙](docs/superpowers/specs/2026-09-09-report-writing-skill-design.md): §1은 호출 이름·HTML 산출물·기본 저장 구성, §2는 네 단계, §3은 승인·점검·변경·재개, §4는 작성 기준, §5~§6은 구현 계획 인계와 검토 완료 상태를 다룬다.
 2. [통합 증류기 연결 예시](docs/superpowers/specs/2026-09-09-integrated-distiller-writing-example.md): 자료 풀에서 실제 원고까지의 연결. §4 끝에 동일한 내용의 결과보고서형·논문형 비교를 둔다.
 3. [예시 작업 메모](docs/superpowers/specs/2026-09-09-integrated-distiller-writing-example-notes.md): 자료 대조·선택 이유, §3의 판정·수정 사례, §5~§6의 제안·피드백·진행 이력, §7의 스펙 정리 기록.
 4. [과거 비판적 검토](docs/superpowers/specs/2026-09-09-report-writing-skill-critical-review.md): 당시 스펙의 모호함과 보완 제안. 역사 기록으로 보존한다.
@@ -37,11 +38,10 @@
 
 ## 다음 작업
 
-1. 스펙 §4의 그룹 6·7 구체화안과 연결된 예시를 한 묶음으로 검토한다.
-2. §2의 완료 기준, §3.2의 인계 경계, §3.6의 기타 진입·재개 세부안을 검토한다. 첫 묶음 검토 방식은 이미 확정한 조건을 따른다.
-3. 필요한 보조 사례를 확인하고 호출 이름·실행 산출물의 저장 구성을 정한다.
-4. 최종 설계 검토 후 `superpowers:writing-plans`로 [구현 계획 폴더](docs/superpowers/plans/)에 하나의 스킬 구현 계획을 작성한다. 보고서 라이팅 플랜과는 별개다.
-5. 구현 계획 검토 후 [스킬 폴더](skills/)에서 실제 스킬을 구현·검증한다.
+1. 확정한 호출 이름·HTML 출력과 스펙 §1.2의 기본 저장 구성을 반영하여 `superpowers:writing-plans`로 [구현 계획 폴더](docs/superpowers/plans/)에 구현 계획을 작성한다. 이미 검토한 세부 기준의 승인을 반복하지 않는다.
+2. 구현 계획 검토 후 [스킬 폴더](skills/)에서 네 단계 스킬과 공통 참조를 구현·검증한다. 보조 사례는 이 과정에서 필요에 맞게 활용한다.
+
+기본 최종 경로는 `reports/<report-id>/report.html`이며, 중간 Markdown 자료와 진행 기록은 같은 문서 폴더의 `work/`에 둔다. 사용자 지정 경로와 재개 중인 기존 경로를 우선한다.
 
 ## 외부 원자료
 
