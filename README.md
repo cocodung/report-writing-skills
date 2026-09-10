@@ -1,6 +1,6 @@
 # Report Writing Skill
 
-자료·기존 초안·작성 조건을 받아 글감 브레인스토밍 → 스펙시트 → 라이팅 플랜 → 원고 작성으로 이어지는 스킬을 개발한다. 보고서 전반에 적용하며 첫 적용 대상은 결과보고서다.
+자료·기존 초안·작성 조건에서 시작해 글감 브레인스토밍 → 스펙 → 라이팅 플랜 → HTML 원고로 이어지는 네 단계 로컬 Codex 플러그인이다. 사용자가 단계 이름으로 진입하면 같은 보고서의 승인 상태와 작업 기록을 다음 단계로 넘긴다.
 
 ## 현재 개발 상태
 
@@ -9,16 +9,43 @@
 | 항목 | 상태 |
 |---|---|
 | 개발 저장소 | `report-writing-skill/`를 별도 로컬 Git 저장소로 구성 |
-| 스펙 정리 | 반복 규칙을 통합하고 형식별 예시·판정 사례를 보조 문서로 이관. [대응표와 검토 기록](docs/superpowers/specs/2026-09-09-integrated-distiller-writing-example-notes.md#spec-refactor-audit) |
-| 설계 결정 | 그룹 6·7과 완료·인계·진입·재개를 포함한 세부 기준의 설계 검토 완료 |
-| 호출·산출물 | `report_writing:brainstorm`, `report_writing:spec`, `report_writing:writing-plan`, `report_writing:develop` / 최종 HTML 보고서 |
-| 첫 예시 | 원고 방향에 긍정적 평가. 해설 후 U·M·P·S 표기 유지 |
-| 구현 계획 | [구현 계획](docs/superpowers/plans/2026-09-10-report-writing-skills-implementation.md)에 따라 단계별 구현·검증 중 |
-| 실제 스킬 | `report_writing/skills/`에 brainstorm과 공통 인계 계약 구현. spec·writing-plan·develop은 후속 Task에서 구현 |
+| 설계 | 네 단계, 승인·재개·변경, 그룹 6·7, HTML 산출물 기준 검토 완료 |
+| 구현 | `report_writing/skills/`의 네 SKILL.md와 공통 참조·HTML 자산 구현 완료 |
+| 형식·패키지 검사 | 공식 네 skill 검사와 plugin 검사, 다른 임시 위치의 상대 참조·수동 호출 정책 검사 통과 |
+| 행동 검사 | B/S/P/D 독립 사례와 I-1~I-7 통합 12개 사례 통과. 초기 P-1 그림 단계 실패와 수정·재실행도 기록 |
+| HTML 확인 | 결과보고서형·논문형·재개·변경 사례의 정적 구조, 기록된 넓고 좁은 화면, 내부 링크 이동 확인 |
+| 실제 설치 | 수행하지 않음. 설치된 앱에서의 이름 검색·호출 발견은 미검증 |
+
+자세한 실행 조건과 근거는 [구현 검증 기록](docs/validation/implementation-validation.md)에 있다. 패키지 검사와 행동 검사는 로컬 파일을 직접 읽힌 평가이며 실제 설치 검증과 구별한다.
+
+## 네 단계 사용
+
+전체 `report_writing/` 플러그인 루트를 함께 둔다. 네 단계가 공통 workflow·산출물 계약과 승인 state를 상대 경로로 공유하고 develop이 작성 기준·연결 예시·HTML 자산을 읽기 때문이다. 자동 호출은 꺼져 있으므로 아래 이름을 명시해서 진입한다. 한 문서를 계속 작성할 때는 단계 전체 승인과 진행 승인을 받으면 현재 에이전트가 다음 SKILL.md를 읽어 이어 가므로 단계마다 이름을 다시 부를 필요는 없다.
+
+| 호출 | 입력 | 결과 |
+|---|---|---|
+| `report_writing:brainstorm` | 원자료·기존 초안·작성 조건과 핵심 선택 | `work/brief.md`, `materials.md`, `state.md` |
+| `report_writing:spec` | 승인된 brief와 연결 자료 | 제목별 핵심·참조를 담은 `work/spec.md`와 갱신 state |
+| `report_writing:writing-plan` | 승인된 spec·brief·materials | 실제 설명·근거·순서의 `work/writing-plan.md`, 필요한 경우 핵심만 담은 `figures.md` |
+| `report_writing:develop` | 승인된 writing-plan과 작업 기록 | 브라우저용 `report.html`, 갱신 state와 필요한 전체 그림 메모 |
+
+기본 최종 경로는 `reports/<report-id>/report.html`이다. 중간 Markdown과 승인·체크·변경·재개 기록은 같은 문서 루트의 `work/`에 둔다. 사용자가 지정한 경로와 재개 중인 기존 경로가 기본값보다 우선한다.
+
+예를 들어 결과보고서형으로 시작할 때는 다음처럼 요청한다.
+
+> `report_writing:brainstorm` 이 자료로 제품 책임자용 개발 결과보고서를 준비해줘. 가독성을 중시하고 구현 선택과 관측 한계를 연결해줘.
+
+논문형이 필수라면 형식 조건을 함께 준다.
+
+> `report_writing:brainstorm` 이 자료로 논문형 보고서를 준비해줘. 문단 중심 형식 안에서 가독성을 높여줘.
+
+이미 승인한 플랜에서는 앞 단계를 되풀이하지 않고 현재 승인 발언으로 재개할 수 있다.
+
+> 이 플랜은 승인했으니 `report_writing:develop`으로 이어서 써줘.
 
 ## 먼저 읽을 문서
 
-1. [기준 설계 스펙](docs/superpowers/specs/2026-09-09-report-writing-skill-design.md): §1은 호출 이름·HTML 산출물·기본 저장 구성, §2는 네 단계, §3은 승인·점검·변경·재개, §4는 작성 기준, §5~§6은 구현 계획 인계와 검토 완료 상태를 다룬다.
+1. [기준 설계 스펙](docs/superpowers/specs/2026-09-09-report-writing-skill-design.md): §1은 호출 이름·HTML 산출물·기본 저장 구성, §2는 네 단계, §3은 승인·점검·변경·재개, §4는 작성 기준, §5~§6은 문서 권위와 구현 상태를 다룬다.
 2. [통합 증류기 연결 예시](docs/superpowers/specs/2026-09-09-integrated-distiller-writing-example.md): 자료 풀에서 실제 원고까지의 연결. §4 끝에 동일한 내용의 결과보고서형·논문형 비교를 둔다.
 3. [예시 작업 메모](docs/superpowers/specs/2026-09-09-integrated-distiller-writing-example-notes.md): 자료 대조·선택 이유, §3의 판정·수정 사례, §5~§6의 제안·피드백·진행 이력, §7의 스펙 정리 기록.
 4. [과거 비판적 검토](docs/superpowers/specs/2026-09-09-report-writing-skill-critical-review.md): 당시 스펙의 모호함과 보완 제안. 역사 기록으로 보존한다.
@@ -38,10 +65,7 @@
 
 ## 다음 작업
 
-1. [구현 계획](docs/superpowers/plans/2026-09-10-report-writing-skills-implementation.md)에 따라 남은 spec·writing-plan·develop 단계를 구현하고 단계별 행동을 검증한다.
-2. 네 단계가 갖춰지면 전체 패키지 구성과 통합 시나리오를 검증한다. 최종 산출물은 HTML이며, 실제 설치·호출 발견 여부는 로컬 구현·검증과 구별해 기록한다.
-
-기본 최종 경로는 `reports/<report-id>/report.html`이며, 중간 Markdown 자료와 진행 기록은 같은 문서 폴더의 `work/`에 둔다. 사용자 지정 경로와 재개 중인 기존 경로를 우선한다.
+로컬 구현과 계획된 검증은 완료됐다. 이후 실제로 사용하려면 플러그인을 설치하고 설치된 환경에서 네 수동 호출 이름이 검색·실행되는지 별도로 확인해야 한다. 설치는 이번 구현 범위에서 수행하지 않았다.
 
 ## 외부 원자료
 
