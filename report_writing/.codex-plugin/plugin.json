@@ -1,0 +1,16 @@
+{
+  "name": "report_writing",
+  "version": "0.1.0",
+  "description": "자료와 작성 조건에서 단계별 검토를 거쳐 HTML 보고서를 작성하는 스킬",
+  "author": { "name": "ganadi" },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Report Writing",
+    "shortDescription": "Write reports through four reviewed stages",
+    "longDescription": "Collect materials, define a report spec, expand a writing plan, and develop an HTML report.",
+    "developerName": "ganadi",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": ["Use $report_writing:brainstorm to start a report."]
+  }
+}

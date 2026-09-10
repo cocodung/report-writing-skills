@@ -1,0 +1,5 @@
+interface:
+  display_name: "Report Writing Brainstorm"
+  short_description: "Gather report materials, intent, and writing conditions"
+policy:
+  allow_implicit_invocation: false
