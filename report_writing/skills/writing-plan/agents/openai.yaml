@@ -1,0 +1,5 @@
+interface:
+  display_name: "Report Writing Plan"
+  short_description: "Expand report section goals into grounded explanations"
+policy:
+  allow_implicit_invocation: false

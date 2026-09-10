@@ -88,6 +88,41 @@ state는 세 S의 S-G3·S-G4·S-G5 9개 행과 ALL-G12를 직접 자료 근거�
 
 재실행 판정: S-G3, S-G4, S-G5, ALL-G12와 인계·승인 경계를 모두 충족했다. S-1 수정 후 행동 검증 통과.
 
+## P-1 · writing-plan
+
+### 스킬 없는 기준 실행
+
+- 모델·추론: `gpt-6-astra`, high, 새 문맥
+- 제공 조건: P-1 요청, 승인된 `키오스크 스펙 v0.1`, `tests/fixtures/kiosk/materials.md`의 원자료만 제공. 대상 스킬·구현 계획·설계 스펙·루브릭·정답은 미제공
+- 원문: `.work/validation/P-1/control/response.md`
+- 생성물: `.work/validation/P-1/control/writing-plan.md`
+
+기준 실행은 S1에서 A의 세 화면과 B의 두 화면, 선택 통합과 최종 확인 유지, 내부 검토 이유와 정량 측정 부재를 실제 설명으로 확장했다. S2는 동일한 성인 12명의 같은 과제 A→B 고정 순서 1회 수행, 84초·63초의 완료 시간 중앙값, 성공 정의와 10/12명·11/12명, 인과 해석 제한을 연결했다. S3은 순서 균형 평가의 목적과 미수행 상태를 구별했다. 그림은 자리와 핵심 메시지만 제시했고 표와 다음 절 연결의 소속도 읽을 수 있었다. 실제 설명 품질은 충족이다.
+
+생성물에는 문서와 선행 spec·brief 버전, P별 소속·역할과 근거 대응, 모든 S/P·설명 문장의 P-G3~P-G5 및 ALL-G12 상태, 승인 범위를 지속하는 state가 없었다. 이는 내용 확장의 실패가 아니라 이후 develop이 의미의 기준으로 사용할 인계 계약의 차이다.
+
+### 구현에서 반영한 수정
+
+- writing-plan이 승인된 spec 외에도 brief의 작성 조건·강조점, 연결된 설명 기록과 전체 materials를 읽고 실제 원문에 근거해 확장하도록 했다.
+- 모든 S 아래 P에 실제 설명, 역할, 근거, 조건, 소속, 순서와 배치 지시를 구별하고 그림에는 중심 메시지만 남기도록 했다.
+- 모든 S/P와 설명 문장에 P-G3~P-G5를 적용하고 전체 ALL-G12와 승인 범위를 state에 보존하도록 했다.
+- 승인된 목표 안의 최초 하위 설명·포인터 선택은 정상 확장으로 처리하고, 승인된 플랜의 필수 의미가 바뀔 때만 변경 계약을 적용하도록 했다.
+
+### 스킬 실행
+
+- 모델·추론: `gpt-6-astra`, high, 새 문맥
+- 제공 조건: P-1 원자료·승인된 고정 spec·요청, `report_writing/skills/writing-plan/SKILL.md`와 그 공통 참조. 기준 실행과 같은 사용자 조건을 제공
+- 응답 원문: `.work/validation/P-1/with-skill/response.md`
+- 생성물: `.work/validation/P-1/with-skill/work/writing-plan.md`, `materials.md`, `figures.md`, `state.md`
+
+전체 플랜은 승인된 S1~S3 아래 P1~P6을 실제 설명 순서로 배치했다. S1은 A의 세 화면과 B의 두 화면, 선택 통합, 최종 확인을 유지한 내부 검토 이유와 정량 측정 부재를 분리했다. S2는 같은 성인 12명이 동일 과제를 A→B 순서로 한 번씩 수행한 조건, 84초·63초의 중앙값, 성공 정의와 10/12명·11/12명을 연결했다. 21초와 한 명의 차이는 집계값의 단순 차이로 표시하고 개인별 변화나 인과 효과로 확대하지 않았다. S3은 M2의 고정 순서 한계와 M3의 순서 균형 계획을 연결하고 미수행 상태와 제공되지 않은 세부를 보존했다.
+
+모든 P에는 소속·역할, 실제 설명, 근거·조건, 배치 지시가 있고 각 문장의 역할을 판단할 수 있다. F1은 핵심 메시지와 S1 내 위치만 기록했으며 결과 표는 S2/P4, 다음 절 연결은 각각 S1·S2에 명시적으로 소속된다. materials는 M1~M4 원문을 확인하고 M2를 S2와 S3의 필요성에 연결했으며, 관계가 확인되지 않은 M4의 미채택 이유를 남겼다. 별도 brief가 없는 입력 상태는 누락으로 감추지 않고 제공된 spec의 작성 조건을 사용한 것으로 기록했다.
+
+state는 S1/P1~P2, S2/P3~P5, S3/P6의 P-G3·P-G4·P-G5 9개 행과 ALL-G12를 구체적인 역할·근거로 확인했다. 현재 사용자 발언에 따른 spec 내용·구조와 writing-plan 진행 승인은 보존하고 새 writing-plan의 내용·구조 및 develop 진행은 미승인으로 남겼다. 최초 확장에 별도 변경 승인을 요구하지 않았고 원고를 작성하지 않았다.
+
+판정: P-G3, P-G4, P-G5, ALL-G12와 인계·승인 경계를 모두 충족했다. P-1 행동 검증 통과. 관찰된 행동이 계약을 충족하여 production 지침의 추가 수정이나 행동 재실행은 필요하지 않았다.
+
 ## 형식 검사
 
 다음 명령을 구현 파일 작성 후 실행했다.
@@ -95,11 +130,13 @@ state는 세 S의 S-G3·S-G4·S-G5 9개 행과 ALL-G12를 직접 자료 근거�
 ```powershell
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/brainstorm
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/spec
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/writing-plan
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/plugin-creator/scripts/validate_plugin.py ./report_writing
 git diff --cached --check
 ```
 
 - 공식 brainstorm skill 검사(Task 1): `Skill is valid!` (exit 0)
 - 공식 spec skill 검사(Task 2 및 검토 후 수정): `Skill is valid!` (exit 0)
+- 공식 writing-plan skill 검사(Task 3): `Skill is valid!` (exit 0)
 - 공식 plugin 검사(Task 1): `Plugin validation passed` (exit 0). 네 단계 전체 판정은 Task 5에서 수행한다.
 - 각 Task의 스테이징된 신규 파일 포함 공백 검사: 출력 없음 (exit 0)
