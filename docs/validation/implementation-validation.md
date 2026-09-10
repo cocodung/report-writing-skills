@@ -63,7 +63,7 @@
 - 모든 S의 S-G3~S-G5와 전체 ALL-G12를 state에 기록하고, 단계 전체를 한 번에 제시한 뒤 내용·구조·진행 gate를 적용하도록 했다.
 - 설치 후에도 읽을 수 있는 연결 예시에 목표와 실제 설명, 소제목 소속, 변경 수준, 표현 방식, 경계 수정 사례를 자족적으로 담았다.
 
-### 스킬 실행
+### 초기 스킬 실행
 
 - 모델·추론: `gpt-6-astra`, high, 새 문맥
 - 제공 조건: S-1 원자료·승인된 시작 brief·요청, `report_writing/skills/spec/SKILL.md`와 그 공통 참조. 기준 실행과 같은 사용자 조건을 제공
@@ -72,9 +72,21 @@
 
 전체 스펙은 승인된 이유→구현→관측과 한계→후속 평가 흐름을 S1~S4로 구성했다. S1은 최종 확인 유지 이유와 정량 검증 부재, S2는 두 화면 구현, S3는 12명의 A→B 고정 순서 관측과 인과 해석 제한, S4는 아직 수행하지 않은 후속 평가를 각각 하나의 목표로 맡았다. 요청은 고정 섹션 수를 정하지 않았으며 네 섹션은 독립 목표와 승인된 순서에 대응한다.
 
-각 우선 참조에는 `input.md` 경로, M 제목 locator, 참고 이유가 함께 있고, 상세 설명 후보는 `spec-notes.md`로 분리했다. state에는 네 S 각각의 S-G3·S-G4·S-G5 12개 행과 전체 ALL-G12가 확인 위치·근거·필요한 수정과 함께 기록되었다. 시작 brief의 내용·구조와 spec 진행 승인은 현재 사용자 발언에 연결해 보존하고, 새 spec은 검토 후보와 미승인 상태로 두었다. writing-plan 진행을 확정하지 않았고 섹션별 승인을 요구하지 않았다.
+각 우선 참조에는 `input.md` 경로, M 제목 locator, 참고 이유가 함께 있고, 상세 설명 후보는 `spec-notes.md`로 분리했다. 시작 brief의 내용·구조와 spec 진행 승인은 현재 사용자 발언에 연결해 보존하고, 새 spec은 검토 후보와 미승인 상태로 두었다. writing-plan 진행을 확정하지 않았고 섹션별 승인을 요구하지 않았다.
 
-판정: S-G3, S-G4, S-G5, ALL-G12와 인계·승인 경계를 모두 충족했다. S-1 행동 검증 통과. 관찰된 실패가 없어 production 수정과 행동 재실행은 필요하지 않았다.
+독립 검토에서 S3의 사용자 검토용 핵심이 `12명`과 `A→B`는 보존했지만, 같은 과제를 각 한 번 수행했다는 노출 조건을 참조 이유의 `수행 조건` 뒤에만 두었다는 누락을 발견했다. `tests/rubric.md`의 S-G5는 이 범위를 핵심 또는 바로 연결된 조건에서 보이게 요구하므로 S-G5 미충족이다. state가 12개의 S-G3~S-G5 행을 모두 충족으로 기록한 것도 이 누락을 잡지 못한 잘못된 자체 판정이다. S-G3, S-G4, ALL-G12, 자료 포인터, 인계·승인 경계는 충족했다.
+
+### 검토 후 수정과 재실행
+
+비교·관측 주장의 범위를 좌우하는 대상 집단, 공통 과제, 비교 순서·노출 조건을 핵심이나 바로 연결된 조건에 보존하도록 spec 지침을 보완했다. 모든 세부를 핵심에 나열하는 방식은 요구하지 않는다. 최초 `.work/validation/S-1/with-skill/` 산출물은 초기 미충족 증거로 그대로 보존한다.
+
+수정된 스킬을 같은 모델·추론 설정의 새 문맥과 같은 사용자 요청으로 재실행했다. 원문은 `.work/validation/S-1/with-skill-r2/response.md`, 생성물은 같은 폴더의 `work/spec.md`, `materials.md`, `spec-notes.md`, `state.md`에 보존했다.
+
+재실행 스펙의 관측 핵심은 성인 12명, 동일 예약 과제, A→B 순서, 한 번씩 수행이라는 범위를 모두 직접 보이고, 관측 차이와 순서 영향을 분리한 변경 효과로 확정할 수 없다는 제한을 함께 유지했다. M2의 원문 위치와 시간·성공 수치, 성공 정의, 배정 조건을 확인할 이유도 연결했다. S1은 구현과 정량 측정이 없는 내부 검토 조건, S3은 미수행 후속 계획을 분리했다.
+
+state는 세 S의 S-G3·S-G4·S-G5 9개 행과 ALL-G12를 직접 자료 근거로 확인했다. 승인된 brief 범위는 보존하고 새 spec의 내용·세부 구조와 writing-plan 진행은 미승인으로 남겼다. 다음 단계로 진행하거나 섹션별 승인을 요구하지 않았다.
+
+재실행 판정: S-G3, S-G4, S-G5, ALL-G12와 인계·승인 경계를 모두 충족했다. S-1 수정 후 행동 검증 통과.
 
 ## 형식 검사
 
@@ -82,10 +94,12 @@
 
 ```powershell
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/brainstorm
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/spec
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/plugin-creator/scripts/validate_plugin.py ./report_writing
 git diff --cached --check
 ```
 
-- 공식 skill 검사: `Skill is valid!` (exit 0)
-- 공식 plugin 검사: `Plugin validation passed` (exit 0). 현재 구현된 brainstorm 단계의 패키지 구조 검사이며 네 단계 전체 판정은 Task 5에서 수행한다.
-- 스테이징된 신규 파일 포함 공백 검사: 출력 없음 (exit 0)
+- 공식 brainstorm skill 검사(Task 1): `Skill is valid!` (exit 0)
+- 공식 spec skill 검사(Task 2 및 검토 후 수정): `Skill is valid!` (exit 0)
+- 공식 plugin 검사(Task 1): `Plugin validation passed` (exit 0). 네 단계 전체 판정은 Task 5에서 수행한다.
+- 각 Task의 스테이징된 신규 파일 포함 공백 검사: 출력 없음 (exit 0)
