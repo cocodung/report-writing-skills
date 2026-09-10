@@ -210,7 +210,7 @@ if ($LASTEXITCODE -ne 0) { throw 'PyYAML installation failed.' }
 - Produces: §2 계약의 materials·brief·state. 다음 단계는 이 셋과 사용자 승인을 입력으로 사용한다.
 - Shared resource anchors: workflow의 `entry`, `gates`, `checks`, `changes`, `resuming`; artifacts의 `identity`, `brief`, `materials`, `spec`, `writing-plan`, `state`, `figures`.
 
-- [ ] **Step 1: 평가 자료와 독립 요청을 작성한다.**
+- [x] **Step 1: 평가 자료와 독립 요청을 작성한다.**
 
 `tests/fixtures/kiosk/materials.md`에는 다음 데이터를 그대로 넣는다. **검증용 합성 자료이며 실제 실험 결과가 아님**을 머리에 표시한다.
 
@@ -241,11 +241,11 @@ B는 방과 시간을 한 화면에서 선택하고 다음 화면에서 최종 �
 
 평가자는 brief에 의도·관측·계획이 구분되고 전체 흐름이 형성되는지, 최초 불확실성을 확인하는지, 아직 스펙/원고를 승인된 결과로 밀어붙이지 않는지 본다. M4를 미채택해도 자료 접근은 유지해야 한다.
 
-- [ ] **Step 2: B-1을 스킬 없이 실행하고 원문과 판정을 기록한다.**
+- [x] **Step 2: B-1을 스킬 없이 실행하고 원문과 판정을 기록한다.**
 
 평가 대상에는 §3.1 조건과 Step 1 자료·요청만 준다. 질문이 나오면 정해진 후속 응답을 전달한다. 실제 오류를 `tests/rubric.md`의 B1~B3·ALL-G12에 대응한다. 단순히 질문 수가 많거나 적다는 이유만으로 판정하지 않는다.
 
-- [ ] **Step 3: 최소 manifest와 수동 호출 정책을 작성한다.**
+- [x] **Step 3: 최소 manifest와 수동 호출 정책을 작성한다.**
 
 `report_writing/.codex-plugin/plugin.json`:
 
@@ -291,7 +291,7 @@ policy:
 
 플러그인 이름의 밑줄은 유지한다. 스킬 폴더와 frontmatter의 name에는 `brainstorm`, `spec`, `writing-plan`, `develop`만 쓴다. 네임스페이스는 manifest가 제공한다.
 
-- [ ] **Step 4: 공통 규칙을 출처에 대응해 옮긴다.**
+- [x] **Step 4: 공통 규칙을 출처에 대응해 옮긴다.**
 
 `workflow.md`에는 다음 대응으로 **현재 규칙과 예외를 함께** 옮긴다. 과거 검토 상태·개발 과정 서술은 실행 규칙으로 옮기지 않는다. 기존 초안의 첫 묶음 검토 조건이 충족되면 brainstorm·spec·writing-plan의 SKILL.md를 읽어 각 단계의 후보를 만들고 자체 점검한 후 묶음 전체를 제시한다. 이 후보 준비 중에는 단계별 중간 승인 요청을 추가하지 않는다. 신규 문서의 정상 진행과 이미 승인된 자료에서 재개하는 경우를 이 예외와 구별한다.
 
@@ -307,7 +307,7 @@ policy:
 
 `artifacts.md`에는 이 계획 §2의 필드·상태·ID·예시와 스펙 §2.1~§2.2를 통합한다. §2.4의 체크 ID를 해당 산출물 절에 배치한다. 문서별 파일과 상태의 계약은 여기에서만 정의한다.
 
-- [ ] **Step 5: brainstorm의 본문을 작성한다.**
+- [x] **Step 5: brainstorm의 본문을 작성한다.**
 
 ```markdown
 ---
@@ -329,11 +329,11 @@ description: Use when the user explicitly requests report_writing:brainstorm for
 새 그림은 제작하지 않는다. 다른 단계가 남았다는 이유로 현재 의도 확인을 생략하지 않는다.
 ```
 
-- [ ] **Step 6: B-1을 독립 문맥에서 재실행하고 공통 기록을 확인한다.**
+- [x] **Step 6: B-1을 독립 문맥에서 재실행하고 공통 기록을 확인한다.**
 
 확정된 조건을 다시 묻지 않고, 핵심 선택에 필요한 대화 후 짧은 작성안·자료 풀·근거 있는 체크를 만드는지 확인한다. 사용자의 승인 없이 다음 단계 확정으로 넘어가면 미충족이다. 기존 초안 예외와 단계 직접 진입은 Task 5에서 통합 검증한다.
 
-- [ ] **Step 7: 스킬 형식을 검사하고 작업 경로·Git 제외 규칙을 갱신한다.**
+- [x] **Step 7: 스킬 형식을 검사하고 작업 경로·Git 제외 규칙을 갱신한다.**
 
 ```powershell
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/brainstorm
@@ -342,7 +342,7 @@ git diff --check
 
 기대: 검사 성공, 공백 오류 없음. `.gitignore`에 `.work/`를 추가한다. 루트의 비어 있는 스킬 자리표시 파일만 제거하고 README의 실제 개발 경로를 `report_writing/skills/`로 수정한다.
 
-- [ ] **Step 8: Task 1의 검증 근거와 함께 커밋한다.**
+- [x] **Step 8: Task 1의 검증 근거와 함께 커밋한다.**
 
 `feat: add report brainstorming and shared workflow contracts`
 
@@ -360,7 +360,7 @@ git diff --check
 - Produces: S별 제목·핵심·참조를 갖는 spec, S-G3~S-G5와 ALL-G12의 체크 기록.
 - Example anchors: `expansion`, `headings`, `changes`, `presentation`, `repairs`.
 
-- [ ] **Step 1: S-1의 시작 조건과 평가 기준을 기록한다.**
+- [x] **Step 1: S-1의 시작 조건과 평가 기준을 기록한다.**
 
 요청:
 “작성 조건과 큰 흐름은 승인한다. 기능 변경의 선택 이유와 구현 → 관측 결과와 한계 → 후속 평가의 순서로 스펙을 작성해줘. 스펙에는 제목별 핵심과 참조만 짧게 보고 싶다.”
@@ -374,11 +374,11 @@ git diff --check
 - 결과물은 전체 스펙으로 제시한다. 상세 판단/체크를 모든 행의 긴 설명으로 늘리지 않는다.
 - 필요한 내용의 누락·중복·설명 순서를 전체에서 확인한다.
 
-- [ ] **Step 2: S-1을 스킬 없이 실행하고 결과를 보존한다.**
+- [x] **Step 2: S-1을 스킬 없이 실행하고 결과를 보존한다.**
 
 무지침 실행의 스펙과 정합성/길이/승인 처리에 대한 관찰을 남긴다. 과도한 세부 설명이 없는 것만으로 통과시키지 않고, 핵심의 충분함과 조건 표시를 함께 본다.
 
-- [ ] **Step 3: 연결 예시를 설치 후에도 읽을 수 있게 작성한다.**
+- [x] **Step 3: 연결 예시를 설치 후에도 읽을 수 있게 작성한다.**
 
 기존 [연결 예시](../specs/2026-09-09-integrated-distiller-writing-example.md)와 [작업 메모 §3](../specs/2026-09-09-integrated-distiller-writing-example-notes.md#boundary-cases)를 읽고 아래 내용을 `connected-example.md`에 담는다.
 
@@ -391,7 +391,7 @@ git diff --check
 
 외부 프로젝트 파일로 나가는 상대 링크를 런타임 참조로 남기지 않는다. 개발 근거는 이 계획과 검증 문서에서 기존 예시를 연결한다. 참조 파일에는 현재 작업의 승인을 의미하는 예시 승인 기록을 넣지 않는다.
 
-- [ ] **Step 4: spec의 본문과 UI 정책을 작성한다.**
+- [x] **Step 4: spec의 본문과 UI 정책을 작성한다.**
 
 ```markdown
 ---
@@ -415,11 +415,11 @@ description: Use when the user explicitly requests report_writing:spec to select
 
 `agents/openai.yaml`은 Task 1의 네 단계 UI 값 표에서 spec의 값을 사용하고 동일한 수동 호출 정책을 적용한다.
 
-- [ ] **Step 5: S-1을 스킬과 함께 재실행하고 전체 스펙을 대조한다.**
+- [x] **Step 5: S-1을 스킬과 함께 재실행하고 전체 스펙을 대조한다.**
 
 S-G3~S-G5의 필수 조건·원문 확인·사용자에게 드러난 핵심 조건을 검증한다. 자료 포인터가 살아 있고 내부 기록과 사용자 검토물이 구별되는지 확인한다. 모든 S의 체크를 작성한 뒤 사용자에게 섹션별로 승인받으려 하면 미충족이다.
 
-- [ ] **Step 6: 검증 후 커밋한다.**
+- [x] **Step 6: 검증 후 커밋한다.**
 
 ```powershell
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/spec
@@ -440,7 +440,7 @@ git diff --check
 - Consumes: 승인된 spec + brief/강조점 + 연결된 원문/설명 기록 + 전체 materials. 포인터는 추가 자료 접근을 제한하지 않는다.
 - Produces: S/P별 실제 설명·근거·조건·소속·순서, 필요한 그림의 핵심 메시지, 자체 체크와 승인 범위. 이후 develop은 이를 의미의 기준으로 사용한다.
 
-- [ ] **Step 1: P-1에 고정된 스펙 입력을 준비한다.**
+- [x] **Step 1: P-1에 고정된 스펙 입력을 준비한다.**
 
 Task 1의 합성 자료와 다음 스펙을 제공한다. S1의 우선 참조는 M1만 지정하여, 다른 섹션의 관측 자료와 전체 풀을 필요에 따라 읽는지 확인한다.
 
@@ -462,11 +462,11 @@ S3 · 효과를 구분하기 위한 후속 평가
 요청:
 “이 스펙의 내용과 구조를 승인하니 라이팅 플랜으로 확장해줘. 각 제목 밑에 실제 전달할 설명이 있어야 해. 그림이 필요하면 핵심만 적어줘.”
 
-- [ ] **Step 2: P-1의 무지침 기준 실행을 남긴다.**
+- [x] **Step 2: P-1의 무지침 기준 실행을 남긴다.**
 
 평가자는 실제 설명 대신 ‘원인을 설명한다’ 같은 지시만 늘렸는지, 자료에서 읽지 않은 원리나 성능 인과를 보충했는지, S/P의 소속이 구별되는지 확인한다.
 
-- [ ] **Step 3: writing-plan의 본문과 UI 정책을 작성한다.**
+- [x] **Step 3: writing-plan의 본문과 UI 정책을 작성한다.**
 
 ```markdown
 ---
@@ -492,7 +492,7 @@ description: Use when the user explicitly requests report_writing:writing-plan t
 
 `agents/openai.yaml`은 Task 1의 UI 값 표에서 writing-plan의 값을 사용한다.
 
-- [ ] **Step 4: P-1을 독립 문맥에서 재실행한다.**
+- [x] **Step 4: P-1을 독립 문맥에서 재실행한다.**
 
 평가 기준:
 - S1에는 두 화면의 실제 구성과 확인 유지 이유가 들어간다. 구현 사실과 정량 평가를 섞지 않는다.
@@ -502,7 +502,7 @@ description: Use when the user explicitly requests report_writing:writing-plan t
 - P의 표/그림/다음 절 연결이 모두 명확한 S에 대응한다. 그림은 핵심 메시지까지만 준비한다.
 - 승인된 목표 안의 첫 확장을 별도 변경 승인으로 반복 요청하지 않는다.
 
-- [ ] **Step 5: 형식 검사와 행동 검증 후 커밋한다.**
+- [x] **Step 5: 형식 검사와 행동 검증 후 커밋한다.**
 
 ```powershell
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/writing-plan
@@ -525,7 +525,7 @@ git diff --check
 - Produces: `report.html`, 필요한 경우 `work/figures.md`, 갱신한 체크/대응/완료 승인 상태.
 - Figures: 플랜의 그림 핵심 → 같은 그림 ID의 HTML 빈자리·실제 캡션·각주 → figures의 제작 의도·내용·스케치.
 
-- [ ] **Step 1: D-1·D-2 요청과 기준 실행을 준비한다.**
+- [x] **Step 1: D-1·D-2 요청과 기준 실행을 준비한다.**
 
 D-1 입력은 P-1의 스킬 실행 결과 중 검증을 통과한 플랜, 원자료, 다음 평가용 사용자 지시다:
 “이 플랜의 내용과 구조를 승인하니 HTML 보고서로 작성해줘. 결과보고서로 가독성을 높여줘. 그림은 빈자리와 설명만 준비해.”
@@ -535,13 +535,13 @@ D-2는 같은 승인된 내용과 다음 지시를 사용한다:
 
 기준 실행을 각각 독립적으로 수행한다. 같은 내용의 두 표현 방식 비교는 개발 평가의 필요에 따른 것이며 런타임마다 두 버전을 출력하는 규칙이 아니다.
 
-- [ ] **Step 2: 상세 작성 기준을 독립 참조로 옮긴다.**
+- [x] **Step 2: 상세 작성 기준을 독립 참조로 옮긴다.**
 
 `writing-criteria.md`에 스펙 §4.1~§4.4를 현재 규칙으로 옮긴다. §4.2의 G6-1~G7-4 표는 작성 지침과 통과 조건의 의미를 모두 보존한다. 문장 수를 고정하지 않는 조건, 실패·개선 설명, 의미를 보존하는 압축, 논문형 안에서의 가독성 적용도 함께 둔다.
 
 스펙 §3.5 참조는 `workflow.md#changes`, §3.3은 `workflow.md#checks`, 형식 비교는 `connected-example.md#presentation`, 미충족 표현·수정 사례는 `connected-example.md#repairs`로 연결한다. 실제 예시를 새로운 강제 형식으로 만들지 않는다.
 
-- [ ] **Step 3: 최소 HTML 자산을 작성한다.**
+- [x] **Step 3: 최소 HTML 자산을 작성한다.**
 
 `assets/report.html`은 아래 **합성 자료에 기반한 구조 예시**로 만든다. 스킬은 실제 문서의 언어·제목·내용·형식으로 바꾼다. 샘플 그림과 표를 모든 보고서에 요구하지 않는다.
 
@@ -615,7 +615,7 @@ body[data-mode="paper"] main { max-width: 780px; }
 
 자산의 표와 설명은 형식 예시다. 실제 보고서에는 승인된 내용 전체를 작성하며, 이 짧은 예시를 보고서의 전체 구성으로 사용하지 않는다. 표시용 HTML id와 작업용 S/P 대응은 state에서 연결한다.
 
-- [ ] **Step 4: develop의 본문과 UI 정책을 작성한다.**
+- [x] **Step 4: develop의 본문과 UI 정책을 작성한다.**
 
 ```markdown
 ---
@@ -641,11 +641,11 @@ description: Use when the user explicitly requests report_writing:develop to wri
 
 `agents/openai.yaml`은 Task 1의 UI 값 표에서 develop의 값을 사용한다.
 
-- [ ] **Step 5: D-1·D-2를 독립 실행하여 실제 HTML을 확인한다.**
+- [x] **Step 5: D-1·D-2를 독립 실행하여 실제 HTML을 확인한다.**
 
 평가자는 두 원고에서 **같은 필수 의미가 유지되었는지** 먼저 읽는다. 단순히 불렛/문단이 존재하는지로 판정하지 않는다. 결과보고서형은 훑을 때 핵심과 하위 관계가 보이고 이어 읽을 때 설명이 연결돼야 한다. 논문형은 문단 중심의 요점·이유·근거와 다음 문단 연결을 갖춰야 한다.
 
-- [ ] **Step 6: 각주와 HTML 구조를 기계적으로 확인하고 브라우저로 읽는다.**
+- [x] **Step 6: 각주와 HTML 구조를 기계적으로 확인하고 브라우저로 읽는다.**
 
 다음은 평가 시 PowerShell에서 실행할 표준 라이브러리 검사다. 파일 경로는 각 평가 폴더의 실제 report.html로 바꿔 실행한다.
 
@@ -692,7 +692,7 @@ $reportUri = ([System.Uri]$reportHtml).AbsoluteUri
 
 이미지를 직접 열어 상단 배치와 표가 깨지지 않는지 확인한다. 같은 방식으로 좁은 폭 780을 확인한다. 긴 문서의 아래쪽·각주 이동·그림 위치는 사용 가능한 브라우저 도구로 실제 열어 확인하며, 상단 캡처만으로 전체 확인을 완료했다고 기록하지 않는다. 정적 HTML 검사와 시각 점검의 범위를 구별한다.
 
-- [ ] **Step 7: 검증 후 커밋한다.**
+- [x] **Step 7: 검증 후 커밋한다.**
 
 ```powershell
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/develop
