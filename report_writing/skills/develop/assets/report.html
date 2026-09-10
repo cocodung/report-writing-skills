@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>회의실 예약 흐름 개선 · 구조 예시</title>
+<style>
+:root { color-scheme: light; color: #202632; background: #fff; }
+body { margin: 0; font-family: system-ui, sans-serif; font-size: 17px; line-height: 1.75; }
+main { max-width: 900px; margin: auto; padding: 48px 24px; }
+h1, h2, h3 { line-height: 1.35; color: #17263e; }
+h1 { font-size: 2rem; } h2 { margin-top: 2.2em; } h3 { margin-top: 1.5em; }
+p, ul, ol, figure { margin: 1em 0; }
+a { color: #174d91; overflow-wrap: anywhere; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin: 1em 0; }
+caption { text-align: left; font-weight: 700; margin-bottom: .4em; }
+th, td { border-bottom: 1px solid #ccd3dc; padding: .65em; text-align: left; vertical-align: top; }
+th { background: #f1f4f8; }
+.figure-space { border: 1px dashed #8592a3; padding: 2.5rem 1rem; text-align: center; color: #4a5667; }
+figcaption, .note { font-size: .92em; }
+body[data-mode="paper"] main { max-width: 780px; }
+@media (max-width: 600px) { main { padding: 24px 16px; } h1 { font-size: 1.65rem; } }
+@media print {
+  main { max-width: none; padding: 0; }
+  h2, h3 { break-after: avoid; }
+  tr, figure { break-inside: avoid; }
+}
+</style>
+</head>
+<body data-mode="report">
+<main>
+<header><h1>회의실 예약 흐름 개선</h1><p>검증용 합성 자료의 구조 예시</p></header>
+<section aria-labelledby="flow-title">
+<h2 id="flow-title">선택과 확인을 나눈 예약 흐름</h2>
+<p>방과 시간을 한 화면에서 선택하고 다음 화면에서 예약 내용을 확인하도록 구성했다.
+최종 확인을 유지하여 선택 내용을 다시 살펴볼 수 있게 했다.<sup><a id="ref-1" href="#note-1">1</a></sup></p>
+<figure id="figure-1">
+<div class="figure-space">그림 1 삽입 예정</div>
+<figcaption>그림 1. 방·시간 선택 다음에 최종 확인을 두는 예약 흐름.</figcaption>
+<p class="note">주: 이 빈자리는 구현 구조를 설명할 그림을 위한 것이며 실제 그림은 아직 제작하지 않았다.</p>
+</figure>
+</section>
+<section aria-labelledby="results-title">
+<h2 id="results-title">같은 참여자에게서 관측한 차이</h2>
+<p>같은 참여자 12명이 A 다음 B를 수행했을 때 B의 완료 시간 중앙값이 짧았다.
+고정 순서로 수행했으므로 이 차이를 화면 변경만의 효과로 구분할 수 없다.</p>
+<div class="table-wrap">
+<table>
+<caption>표 1. 동일 예약 과제에서 관측한 결과</caption>
+<thead><tr><th scope="col">구성</th><th scope="col">완료 시간 중앙값</th><th scope="col">성공</th></tr></thead>
+<tbody><tr><th scope="row">A</th><td>84초</td><td>10/12명</td></tr>
+<tr><th scope="row">B</th><td>63초</td><td>11/12명</td></tr></tbody>
+</table>
+</div>
+<p class="note">주: 성공은 지정된 방·시간으로 최종 예약을 마친 경우다. 출처: 회의실 예약 키오스크 평가의 합성 관측 기록.</p>
+</section>
+<section aria-labelledby="notes-title">
+<h2 id="notes-title">출처와 주</h2>
+<ol><li id="note-1">검증용 합성 자료의 구현 기록. 실제 보고서에서는 독자가 찾을 수 있는 자료명과 위치로 바꾼다.
+<a href="#ref-1" aria-label="본문으로 돌아가기">↩</a></li></ol>
+</section>
+</main>
+</body>
+</html>

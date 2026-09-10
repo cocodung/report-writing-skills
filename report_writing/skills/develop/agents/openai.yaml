@@ -1,0 +1,5 @@
+interface:
+  display_name: "Report Writing Develop"
+  short_description: "Write a readable HTML report from an approved plan"
+policy:
+  allow_implicit_invocation: false

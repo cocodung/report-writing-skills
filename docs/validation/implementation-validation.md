@@ -123,6 +123,53 @@ state는 S1/P1~P2, S2/P3~P5, S3/P6의 P-G3·P-G4·P-G5 9개 행과 ALL-G12를 �
 
 판정: P-G3, P-G4, P-G5, ALL-G12와 인계·승인 경계를 모두 충족했다. P-1 행동 검증 통과. 관찰된 행동이 계약을 충족하여 production 지침의 추가 수정이나 행동 재실행은 필요하지 않았다.
 
+## D-1·D-2 · develop
+
+### 스킬 없는 기준 실행
+
+- 모델·추론: `gpt-6-astra`, high, 각각 새 문맥
+- 제공 조건: P-1에서 검증을 통과한 같은 플랜과 원자료. D-1에는 결과보고서형 가독성과 그림 빈자리·설명 요청, D-2에는 논문형 문단 중심 형식 안의 가독성 요청을 제공했다. 대상 스킬·구현 계획·설계 스펙·루브릭·정답은 제공하지 않았다.
+- D-1 원문·생성물: `.work/validation/D-1/control/response.md`, `.work/validation/D-1/control/report.html`
+- D-2 원문·생성물: `.work/validation/D-2/control/response.md`, `.work/validation/D-2/control/report.html`, `.work/validation/D-2/control/checks.md`
+- 브라우저 근거: `.work/validation/D-1/control-capture/`, `.work/validation/D-2/control-capture/`
+
+두 원고 모두 A의 세 화면과 B의 두 화면, 방·시간 선택 통합과 최종 확인 유지, 내부 검토 이유와 당시 정량 측정 부재를 보존했다. 같은 성인 12명이 동일 과제를 A→B 순서로 한 번씩 수행한 조건, 완료 시간 중앙값 84초·63초, 성공 정의와 10/12명·11/12명, 집계 차이와 인과 한계를 정확히 연결했다. 순서 균형 평가는 미수행 계획으로 구별했다. D-1은 훑기 쉬운 결과보고서 위계와 이어지는 설명을, D-2는 문단 중심의 논문형과 논리적 연결을 유지했다. 내용과 요청 형식은 모두 의미 수준에서 충족이다.
+
+정적 검사에서는 두 HTML 모두 title·h1·id·anchor 무결성을 통과했다. 1280px와 780px 전체 페이지 캡처에서 body overflow가 없었고, 섹션·표·그림 빈자리·출처가 잘리거나 깨지지 않았다. 기준 실행에는 이동할 내부 링크가 없었으므로 링크 탐색은 적용되지 않았다.
+
+두 원고의 독자용 HTML에는 작업용 M1·M2·M3 표기가 남고 출처가 설명 텍스트일 뿐 이동 가능한 링크는 아니었다. 그림 제작 정보는 HTML 빈자리 안에 있거나 플랜 단계의 중심 메시지·위치에 머물렀으며, 실제 캡션·각주와 연결된 별도 제작 메모가 없었다. 모든 S와 본문·연결의 D-G345·G6-1~G7-4·ALL-G12 및 원고 완료 승인 상태를 지속하는 state도 없었다. 이는 정확한 내용이나 요청 형식의 실패가 아니라 독자 표기와 지속 가능한 인계 계약의 차이다.
+
+### 구현에서 반영한 수정
+
+- develop이 승인된 writing-plan·brief·원자료와 기존 state를 확인하고, 독자용 제목·자료명·위치·각주 링크를 사용하는 HTML을 작성하도록 했다.
+- 플랜의 그림 ID를 HTML 빈자리·실제 캡션·각주와 같은 ID의 `work/figures.md` 제작 의도·내용·간단한 스케치 구성에 연결하도록 했다.
+- 모든 S와 표시용 소제목·본문·연결을 D-G345와 G6-1~G7-4로 확인하고 전체 ALL-G12, 브라우저에서 실제 확인한 범위, 완료 승인 상태를 state에 남기도록 했다.
+- 결과보고서형과 논문형의 작성·점검 조건을 분리하되 두 방식이 같은 핵심·근거·필수 조건을 보존하게 했다.
+
+### 초기 스킬 실행과 D-2 수정
+
+D-1 스킬 실행은 승인된 실제 설명과 모든 관측 조건·수치·제한·미수행 계획을 보존했다. 결과보고서형 위계와 연결된 문단, 독자용 출처·복귀 링크, 같은 그림 ID의 HTML 빈자리와 `work/figures.md`, D-G345·G6-1~G7-4·ALL-G12 및 완료 승인 대기 상태를 갖췄다. HTML 구조 검사와 1280px·780px 전체 캡처, 내부 링크 탐색도 통과했다.
+
+D-2 초기 스킬 실행 역시 같은 필수 의미를 보존하고 논문형 문단 중심 형식 안에서 설명을 연결했다. HTML 구조·넓고 좁은 화면·내부 링크와 그림 연결도 통과했다. 그러나 제공된 `work/figures.md`와 `work/materials.md`에 HTML 연결과 새 사용자 조건을 추가하여 내용이 바뀌었는데도 두 파일 머리와 state의 산출물 표를 입력과 같은 v0.1로 기록했다. 이는 내용·형식 실패가 아니라 `artifacts.md#identity`의 변경 산출물 버전 계약 미충족이다. 최초 산출물은 `.work/validation/D-2/with-skill/`에 수정하지 않고 보존했다.
+
+저장·제시 전에 입력본과 변경 산출물을 비교하고 내용·구조가 바뀐 파일의 머리 버전과 state 대응을 함께 올리며, 바뀌지 않은 승인 입력은 기존 버전을 유지하도록 develop의 마감 단계를 보완했다. 이 장부 수정은 D-1에서 이미 유효했던 내용·형식 행동을 바꾸지 않으므로 D-1은 반복하지 않는다. D-2는 원래 입력과 같은 요청의 새 문맥으로 재실행한 뒤 전체 HTML 구조·브라우저·의미 검사를 다시 수행한다.
+
+### D-2 재실행
+
+- 모델·추론: `gpt-6-astra`, high, 새 문맥
+- 제공 조건: 초기 D-2와 같은 승인된 P-1 플랜·원자료·논문형 요청, 수정된 develop 스킬과 공통 참조
+- 응답 원문: `.work/validation/D-2/with-skill-r2/response.md`
+- 생성물: 같은 폴더의 `report.html`, `work/brief.md`, `materials.md`, `figures.md`, `state.md`
+- 브라우저 근거: `.work/validation/D-2/with-skill-r2-capture/browser-checks.json`, `full-1280.png`, `full-780.png`
+
+재실행 원고는 A의 세 화면과 B의 두 화면, 선택 통합과 최종 확인 유지, 내부 검토 이유와 당시 정량 측정 부재를 보존했다. 동일한 성인 12명이 같은 과제를 A→B 고정 순서로 한 번씩 수행한 조건, 84초·63초 중앙값, 성공 정의와 10/12명·11/12명, 집계 차이와 개인별 변화·인과 효과를 구분할 수 없는 한계를 모두 유지했다. 순서 균형 평가는 미수행 계획으로 남았다. 논문형 문단 중심 배치에서 구현→관측과 한계→후속 계획이 이어졌고 결과보고서형 불렛 구조로 바뀌지 않았다.
+
+state는 세 S의 D-G345와 G6-1~G7-4 27개 행, 전체 ALL-G12와 브라우저 확인 근거를 기록했다. 새 원고의 자체 점검을 사용자 승인으로 확대하지 않고 report v0.1 전체의 완료 승인을 대기 상태로 두었다. 수정한 materials와 figures는 각각 v0.2로 올리고 state의 산출물·선행 버전·변경 대응을 같은 값으로 연결했다. 승인된 spec과 writing-plan은 변경하지 않아 v0.1을 유지했으며, 새 state는 현재 산출물 대응을 기록하는 v0.1로 일관된다.
+
+정적 HTML 검사는 title·h1·중복 ID·내부 anchor를 통과했다. 1280px와 780px 전체 페이지 캡처에서 가로 넘침 없이 제목 위계·문단·표·그림 빈자리·출처가 읽혔다. 컨트롤러가 두 이미지를 전체 높이로 직접 확인하고 출처 링크와 본문 복귀 링크의 실제 이동도 확인했다.
+
+재실행 판정: D-G345, G6-1~G7-4, ALL-G12, HTML·브라우저 확인, 산출물 버전·인계 및 승인 경계를 모두 충족했다. D-1과 D-2 행동 검증 통과.
+
 ## 형식 검사
 
 다음 명령을 구현 파일 작성 후 실행했다.
@@ -131,6 +178,7 @@ state는 S1/P1~P2, S2/P3~P5, S3/P6의 P-G3·P-G4·P-G5 9개 행과 ALL-G12를 �
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/brainstorm
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/spec
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/writing-plan
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/develop
 & ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/plugin-creator/scripts/validate_plugin.py ./report_writing
 git diff --cached --check
 ```
@@ -138,5 +186,6 @@ git diff --cached --check
 - 공식 brainstorm skill 검사(Task 1): `Skill is valid!` (exit 0)
 - 공식 spec skill 검사(Task 2 및 검토 후 수정): `Skill is valid!` (exit 0)
 - 공식 writing-plan skill 검사(Task 3): `Skill is valid!` (exit 0)
+- 공식 develop skill 검사(Task 4): `Skill is valid!` (exit 0)
 - 공식 plugin 검사(Task 1): `Plugin validation passed` (exit 0). 네 단계 전체 판정은 Task 5에서 수행한다.
 - 각 Task의 스테이징된 신규 파일 포함 공백 검사: 출력 없음 (exit 0)
