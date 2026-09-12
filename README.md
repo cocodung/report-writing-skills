@@ -14,7 +14,8 @@
 | 형식·패키지 검사 | 공식 네 skill 검사와 plugin 검사, 다른 임시 위치의 상대 참조·수동 호출 정책 검사 통과 |
 | 행동 검사 | B/S/P/D 독립 사례와 I-1~I-7 통합 12개 사례 통과. 초기 P-1 그림 단계 실패와 수정·재실행도 기록 |
 | HTML 확인 | 결과보고서형·논문형·재개·변경 사례의 정적 구조, 기록된 넓고 좁은 화면, 내부 링크 이동 확인 |
-| 실제 설치 | 개인 플러그인 `report_writing@personal` 설치·활성화 완료. 원래 보고서 폴더에서 네 스킬이 사용자 범위로 발견됨을 App Server로 확인 |
+| 실제 설치 (Codex) | 개인 플러그인 `report_writing@personal` 설치·활성화 완료. 원래 보고서 폴더에서 네 스킬이 사용자 범위로 발견됨을 App Server로 확인 |
+| 실제 설치 (Claude Code) | `.claude-plugin/` 매니페스트(플러그인·마켓플레이스) 추가 완료. 실제 설치·발견 검증은 대기 중 |
 
 자세한 실행 조건과 근거는 [구현 검증 기록](docs/validation/implementation-validation.md)과 [설치 검증 기록](docs/validation/installation-validation.md)에 있다. 로컬 파일을 직접 읽힌 행동 평가와 설치 후 스킬 발견 검증을 구별한다.
 
@@ -42,6 +43,17 @@
 이미 승인한 플랜에서는 앞 단계를 되풀이하지 않고 현재 승인 발언으로 재개할 수 있다.
 
 > 이 플랜은 승인했으니 `report_writing:develop`으로 이어서 써줘.
+
+## Claude Code 설치
+
+같은 `report_writing/` 배포 단위를 Claude Code 플러그인으로도 설치할 수 있다. 이 저장소가 프라이빗 마켓플레이스 역할을 하며, 플러그인 루트는 `report_writing/`으로 Codex와 동일하다 (`.codex-plugin/plugin.json` 옆에 `.claude-plugin/plugin.json`이 나란히 있다).
+
+```
+/plugin marketplace add cocodung/report-writing-skills
+/plugin install report_writing@report-writing-skills
+```
+
+프라이빗 저장소이므로 GitHub 인증(브라우저 로그인 또는 자격 증명 관리자에 저장된 크리덴셜)이 필요하다. 설치 후 `report_writing:brainstorm` 등 네 이름이 `Skill` 도구 목록에 뜨는지 확인한다. 자동 호출은 꺼져 있으므로(각 SKILL.md의 description이 명시적 호출만 지시) 이름을 직접 불러 진입한다.
 
 ## 먼저 읽을 문서
 

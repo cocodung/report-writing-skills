@@ -1,0 +1,14 @@
+{
+  "name": "report-writing-skills",
+  "description": "Personal marketplace for the report_writing skill set",
+  "owner": { "name": "ganadi" },
+  "plugins": [
+    {
+      "name": "report_writing",
+      "description": "자료와 작성 조건에서 단계별 검토를 거쳐 HTML 보고서를 작성하는 스킬",
+      "version": "0.1.0",
+      "source": "./report_writing",
+      "author": { "name": "ganadi" }
+    }
+  ]
+}

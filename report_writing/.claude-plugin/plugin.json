@@ -1,0 +1,8 @@
+{
+  "name": "report_writing",
+  "version": "0.1.0",
+  "description": "자료와 작성 조건에서 단계별 검토를 거쳐 HTML 보고서를 작성하는 스킬",
+  "author": { "name": "ganadi" },
+  "homepage": "https://github.com/cocodung/report-writing-skills",
+  "repository": "https://github.com/cocodung/report-writing-skills"
+}
