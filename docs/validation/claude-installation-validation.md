@@ -36,7 +36,7 @@ claude plugin details report_writing@report-writing-skills
 | 항상 로드되는 토큰 비용 | 세션당 ~190 tok (스킬당 ~50 tok) |
 | 호출 시 비용 | brainstorm ~610, spec ~810, writing-plan ~930, develop ~1.1k |
 
-이 검증은 실제 설치·활성화와 플러그인 매니페스트 기준 컴포넌트 인벤토리 확인이다. 새 대화에서 `Skill` 도구로 `report_writing:brainstorm` 등을 실제 호출해 스킬 본문이 로드되는지까지는 검증하지 않았다 — 다음 세션에서 직접 호출해 확인한다.
+이 검증은 실제 설치·활성화와 플러그인 매니페스트 기준 컴포넌트 인벤토리 확인이다. 이미 실행 중이던 세션에서는 `/reload-plugins`를 실행해야 `Skill` 도구 목록에 네 이름이 반영됐다 (`report_writing:brainstorm`, `report_writing:spec`, `report_writing:writing-plan`, `report_writing:develop`). 새 세션은 시작 시 자동으로 반영되므로 재로드가 필요 없다.
 
 ## 사용과 이후 갱신
 
