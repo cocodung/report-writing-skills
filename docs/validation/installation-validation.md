@@ -8,12 +8,12 @@
 |---|---|
 | 개발 소스 | `report-writing-skill/.worktrees/implementation/report_writing/` |
 | 개발 브랜치 | `feat/report-writing-skills` |
-| 개인 마켓플레이스 | `C:/Users/minwoo/.agents/plugins/marketplace.json` |
-| 설치용 원본 | `C:/Users/minwoo/plugins/report_writing/` |
-| 설치 캐시 | `C:/Users/minwoo/.codex-lab/plugins/cache/personal/report_writing/0.1.0/` |
-| 발견 확인의 작업 폴더 | `C:/Users/minwoo/Documents/coop보고서제작` |
+| 개인 마켓플레이스 | `C:/Users/<user>/.agents/plugins/marketplace.json` |
+| 설치용 원본 | `C:/Users/<user>/plugins/report_writing/` |
+| 설치 캐시 | `C:/Users/<user>/.codex-lab/plugins/cache/personal/report_writing/0.1.0/` |
+| 발견 확인의 작업 폴더 | `C:/Users/<user>/Documents/coop보고서제작` |
 
-현재 셸의 `CODEX_HOME`은 `.codex-lab`이다. 기본 경로에서 발견된 CLI는 `C:/Users/minwoo/AppData/Local/Programs/OpenAI/Codex/bin/codex.exe`이며 이 사용자 환경에 설치했다.
+현재 셸의 `CODEX_HOME`은 `.codex-lab`이다. 기본 경로에서 발견된 CLI는 `C:/Users/<user>/AppData/Local/Programs/OpenAI/Codex/bin/codex.exe`이며 이 사용자 환경에 설치했다.
 
 ## 설치와 확인
 
@@ -31,7 +31,7 @@ codex plugin list --json
 Codex App Server를 stdio로 실행하여 `initialize`/`initialized` 후 다음 요청을 보냈다. 보고서 생성이나 모델 turn은 시작하지 않았다.
 
 ```json
-{"id":1,"method":"skills/list","params":{"cwds":["C:/Users/minwoo/Documents/coop보고서제작"],"forceReload":true}}
+{"id":1,"method":"skills/list","params":{"cwds":["C:/Users/<user>/Documents/coop보고서제작"],"forceReload":true}}
 ```
 
 | 발견된 이름 | 범위 | 활성화 |

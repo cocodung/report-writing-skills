@@ -81,13 +81,4 @@
 
 로컬 구현과 계획된 검증에 이어, 사용자의 후속 지시로 개인 플러그인 설치와 네 호출 이름의 발견 확인까지 완료했다. 원래 보고서 폴더에서 새 Codex 대화를 열어 `$report_writing:brainstorm` 등으로 시작한다. 개발 브랜치는 `feat/report-writing-skills`에 보존했으며 워크트리를 옮기거나 main에 병합할 필요는 없다.
 
-설치 원본은 `C:/Users/minwoo/plugins/report_writing/`, 현재 설치본은 `C:/Users/minwoo/.codex-lab/plugins/cache/personal/report_writing/0.1.0/`에 있다. 개발 소스를 수정해도 설치본이 자동 갱신되지는 않으므로, 이후에는 설치 원본을 갱신하고 재설치한다. 경로와 갱신 절차는 설치 검증 기록에 정리했다.
-
-## 외부 원자료
-
-- [현재 사용자 피드백](../리포트%20초안%20피드백0909.md)
-- [현재 보고서 원고](../report_final.md)
-- [이전 초안 피드백](../report_draft_feedback.md)
-- [실험 코드 저장소](../Distillation_Project/)
-
-원자료는 복사하지 않고 위치를 연결한다. 저장소를 다른 위치에 복제하면 원자료의 참조 위치를 다시 연결해야 한다.
+설치 원본은 `C:/Users/<user>/plugins/report_writing/`, 현재 설치본은 `C:/Users/<user>/.codex-lab/plugins/cache/personal/report_writing/0.1.0/`에 있다. 개발 소스를 수정해도 설치본이 자동 갱신되지는 않으므로, 이후에는 설치 원본을 갱신하고 재설치한다. 경로와 갱신 절차는 설치 검증 기록에 정리했다.

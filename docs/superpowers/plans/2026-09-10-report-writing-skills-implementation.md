@@ -174,7 +174,7 @@ Task 1~4에서 각각 **스킬 없는 기준 실행 → 해당 스킬 구현 →
 2026-09-10 로컬에서 Python과 Edge/Chrome 경로를 확인했다. Python의 PyYAML은 아직 설치되어 있지 않다. 아래 준비는 **구현 실행 시** 수행한다.
 
 ```powershell
-$reportPython = 'C:/Users/minwoo/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
+$reportPython = 'C:/Users/<user>/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
 if (-not (Test-Path -LiteralPath './.venv/Scripts/python.exe')) {
     & $reportPython -B -X utf8 -m venv .venv
     if ($LASTEXITCODE -ne 0) { throw 'Virtual environment creation failed.' }
@@ -187,8 +187,8 @@ if ($LASTEXITCODE -ne 0) { throw 'PyYAML installation failed.' }
 
 공식 검사기 위치:
 
-- `C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py`
-- `C:/Users/minwoo/.codex-lab/skills/.system/plugin-creator/scripts/validate_plugin.py`
+- `C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py`
+- `C:/Users/<user>/.codex-lab/skills/.system/plugin-creator/scripts/validate_plugin.py`
 
 각 Task에서 해당 스킬을 검사하고 Task 5에서 플러그인 전체를 검사한다. UTF-8로 읽도록 `-X utf8`를 사용한다.
 
@@ -336,7 +336,7 @@ description: Use when the user explicitly requests report_writing:brainstorm for
 - [x] **Step 7: 스킬 형식을 검사하고 작업 경로·Git 제외 규칙을 갱신한다.**
 
 ```powershell
-& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/brainstorm
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/brainstorm
 git diff --check
 ```
 
@@ -422,7 +422,7 @@ S-G3~S-G5의 필수 조건·원문 확인·사용자에게 드러난 핵심 조�
 - [x] **Step 6: 검증 후 커밋한다.**
 
 ```powershell
-& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/spec
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/spec
 git diff --check
 ```
 
@@ -505,7 +505,7 @@ description: Use when the user explicitly requests report_writing:writing-plan t
 - [x] **Step 5: 형식 검사와 행동 검증 후 커밋한다.**
 
 ```powershell
-& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/writing-plan
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/writing-plan
 git diff --check
 ```
 
@@ -695,7 +695,7 @@ $reportUri = ([System.Uri]$reportHtml).AbsoluteUri
 - [x] **Step 7: 검증 후 커밋한다.**
 
 ```powershell
-& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/develop
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/develop
 git diff --check
 ```
 
@@ -754,8 +754,8 @@ I-1은 한 문서를 이어가는 단일 평가 에이전트로 실행한다. �
 - [x] **Step 3: 네 스킬과 플러그인을 공식 검사기로 확인한다.**
 
 ```powershell
-$reportSkillValidator = 'C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py'
-$reportPluginValidator = 'C:/Users/minwoo/.codex-lab/skills/.system/plugin-creator/scripts/validate_plugin.py'
+$reportSkillValidator = 'C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py'
+$reportPluginValidator = 'C:/Users/<user>/.codex-lab/skills/.system/plugin-creator/scripts/validate_plugin.py'
 foreach ($reportStage in @('brainstorm', 'spec', 'writing-plan', 'develop')) {
     & ./.venv/Scripts/python.exe -B -X utf8 $reportSkillValidator "./report_writing/skills/$reportStage"
     if ($LASTEXITCODE -ne 0) { throw "Skill validation failed: $reportStage" }

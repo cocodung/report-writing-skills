@@ -225,11 +225,11 @@ I-1 재실행 spec의 마감 문장 하나는 캡션 작업을 plan으로 예고
 다음 명령을 구현 파일 작성 후 실행했다.
 
 ```powershell
-& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/brainstorm
-& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/spec
-& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/writing-plan
-& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/develop
-& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/minwoo/.codex-lab/skills/.system/plugin-creator/scripts/validate_plugin.py ./report_writing
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/brainstorm
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/spec
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/writing-plan
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/<user>/.codex-lab/skills/.system/skill-creator/scripts/quick_validate.py report_writing/skills/develop
+& ./.venv/Scripts/python.exe -B -X utf8 C:/Users/<user>/.codex-lab/skills/.system/plugin-creator/scripts/validate_plugin.py ./report_writing
 git diff --cached --check
 ```
 
